@@ -24,7 +24,6 @@ class MainActivity : AppCompatActivity() {
         val day = myCalendar.get(Calendar.DAY_OF_MONTH)
         val month = myCalendar.get(Calendar.MONTH)
 
-
         val dpd = DatePickerDialog(this,
             DatePickerDialog.OnDateSetListener {
                     view, year, month, dayOfMonth ->
@@ -41,17 +40,6 @@ class MainActivity : AppCompatActivity() {
     private fun setInMinutesLabel(year: Int, month: Int, dayOfMonth: Int) {
         val selectedDateAsString: String = "${dayOfMonth}/${month+1}/${year}"
         textBirthday.text = selectedDateAsString
-        textMinutes.text = calculteAgeInMinutes(selectedDateAsString)
-    }
-
-    private fun calculteAgeInMinutes(selectedDate: String): String {
-        val sdf = SimpleDateFormat("dd/MM/yyyy")
-
-        val selectedDate = sdf.parse(selectedDate)
-        val now = sdf.parse(sdf.format(System.currentTimeMillis()))
-        val InMinutes = (now.time / 60000) - (selectedDate.time / 60000)
-
-        return "${InMinutes}"
-
+        textMinutes.text = DateCalculator().calculteAgeInMinutes(selectedDateAsString)
     }
 }

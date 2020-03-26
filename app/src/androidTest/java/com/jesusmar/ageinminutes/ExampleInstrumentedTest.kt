@@ -21,4 +21,11 @@ class ExampleInstrumentedTest {
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
         assertEquals("com.jesusmar.ageinminutes", appContext.packageName)
     }
+
+    @Test
+    fun dateCauculatorTest() {
+        val dc : DateCalculator = DateCalculator()
+        val someDayInThePast = "01/01/2001"
+        assertEquals(dc.calculteAgeInMinutes(someDayInThePast), "10114500")
+    }
 }
